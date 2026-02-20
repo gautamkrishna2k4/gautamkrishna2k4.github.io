@@ -22,7 +22,6 @@ const CONFIG = {
             "Looking to start my career in a finance related role that aligns with my interest, where I can apply my financial knowledge, technical skills, and academics.",
         ],
         stats: [
-            { label: "CGPA", value: "7.4" },
             { label: "Certifications", value: "3" },
             { label: "Languages", value: "4" },
             { label: "Cups of Coffee", value: "∞" },
@@ -36,21 +35,18 @@ const CONFIG = {
             degree: "Bachelor of Commerce (Finance)",
             institution: "Government Arts College, Thiruvananthapuram",
             year: "2022 – 2025",
-            score: "CGPA: 7.4",
             icon: "🎓",
         },
         {
             degree: "CBSE, Class XII",
             institution: "Arya Central School, Pattom, Thiruvananthapuram",
             year: "2022",
-            score: "89%",
             icon: "📚",
         },
         {
             degree: "CBSE, Class X",
             institution: "Arya Central School, Pattom, Thiruvananthapuram",
             year: "2020",
-            score: "88%",
             icon: "📖",
         },
     ],
@@ -155,7 +151,16 @@ const CONFIG = {
     // ── Contact ────────────────────────────────────────────────
     contact: {
         email: "gautamkrishna2k4@gmail.com",
-        phone: "+918590742459",
+        // ── EmailJS Setup (for direct email without redirection) ──
+        // 1. Sign up free at https://www.emailjs.com/
+        // 2. Add Gmail as an Email Service → copy the Service ID
+        // 3. Create an Email Template → copy the Template ID
+        // 4. Copy your Public Key from Account → General
+        emailjs: {
+            publicKey: "YOUR_PUBLIC_KEY",      // paste your public key
+            serviceId: "YOUR_SERVICE_ID",      // paste your service ID
+            templateId: "YOUR_TEMPLATE_ID",     // paste your template ID
+        },
         heading: "Let's Connect & Collaborate",
         subtext:
             "Looking for opportunities in finance, accounting, or business analytics? Let's talk!",
@@ -175,11 +180,7 @@ const CONFIG = {
                 url: "mailto:gautamkrishna2k4@gmail.com",
                 icon: "mail",
             },
-            {
-                name: "Phone",
-                url: "tel:+918590742459",
-                icon: "phone",
-            },
+
         ],
     },
 

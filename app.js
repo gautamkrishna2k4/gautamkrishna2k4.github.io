@@ -156,7 +156,6 @@ function renderEducation() {
           <span class="timeline-year">${edu.year}</span>
         </div>
         <p class="timeline-institution">${edu.institution}</p>
-        <span class="timeline-score">${edu.score}</span>
       </div>
     `;
         timeline.appendChild(item);
@@ -280,10 +279,6 @@ function renderContact() {
         <i data-lucide="mail" style="width:18px;height:18px;color:var(--accent)"></i>
         <a href="mailto:${CONFIG.contact.email}">${CONFIG.contact.email}</a>
       </div>
-      <div class="contact-detail-item">
-        <i data-lucide="phone" style="width:18px;height:18px;color:var(--accent)"></i>
-        <a href="tel:${CONFIG.contact.phone}">${CONFIG.contact.phone}</a>
-      </div>
     </div>
     <div class="contact-socials">
       ${CONFIG.contact.socials
@@ -297,15 +292,54 @@ function renderContact() {
     </div>
   `;
 
-    // Form handler — opens mailto with form data
+    // Initialize EmailJS
+    if (CONFIG.contact.emailjs) {
+        emailjs.init(CONFIG.contact.emailjs.publicKey);
+    }
+
+    // Form handler — sends email directly via EmailJS
     document.getElementById("contact-form").addEventListener("submit", (e) => {
         e.preventDefault();
+        const btn = document.getElementById("form-submit");
+        const status = document.getElementById("form-status");
         const name = document.getElementById("form-name").value;
         const email = document.getElementById("form-email").value;
         const message = document.getElementById("form-message").value;
-        const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
-        const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
-        window.open(`mailto:${CONFIG.contact.email}?subject=${subject}&body=${body}`, "_self");
+
+        if (!CONFIG.contact.emailjs) {
+            // Fallback to mailto if EmailJS not configured
+            const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
+            const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
+            window.location.href = `mailto:${CONFIG.contact.email}?subject=${subject}&body=${body}`;
+            return;
+        }
+
+        btn.disabled = true;
+        btn.innerHTML = '<i data-lucide="loader" style="width:18px;height:18px"></i> Sending...';
+        lucide.createIcons();
+        status.textContent = "";
+        status.className = "form-status";
+
+        emailjs.send(CONFIG.contact.emailjs.serviceId, CONFIG.contact.emailjs.templateId, {
+            from_name: name,
+            from_email: email,
+            message: message,
+            to_email: CONFIG.contact.email,
+        })
+            .then(() => {
+                status.textContent = "✅ Message sent successfully!";
+                status.className = "form-status success";
+                document.getElementById("contact-form").reset();
+            })
+            .catch(() => {
+                status.textContent = "❌ Failed to send. Please try again.";
+                status.className = "form-status error";
+            })
+            .finally(() => {
+                btn.disabled = false;
+                btn.innerHTML = '<i data-lucide="send" style="width:18px;height:18px"></i> Send Message';
+                lucide.createIcons();
+            });
     });
 }
 

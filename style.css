@@ -944,6 +944,21 @@ body:hover .cursor-glow {
   padding: 0 0.3rem;
 }
 
+.form-status {
+  font-size: 0.9rem;
+  text-align: center;
+  margin-top: var(--space-sm);
+  min-height: 1.4em;
+}
+
+.form-status.success {
+  color: #10b981;
+}
+
+.form-status.error {
+  color: #ef4444;
+}
+
 /* ── Education Timeline ────────────────────────────────────── */
 .education-timeline {
   display: flex;
@@ -1124,7 +1139,7 @@ body:hover .cursor-glow {
 
 .languages-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: var(--space-md);
 }
 
@@ -1183,7 +1198,7 @@ body:hover .cursor-glow {
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: var(--space-lg);
+  gap: var(--space-md);
 }
 
 .project-card {
