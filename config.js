@@ -7,89 +7,158 @@ const CONFIG = {
     name: "Gautam Krishna R",
     initials: "GK",
     taglines: [
-        "B.Com Graduate",
-        "Finance & Business Enthusiast",
-        "Aspiring Business Analyst",
+        "CMA USA Aspirant",
+        "Finance Graduate",
         "Numbers Tell Stories",
+        "Aspiring Finance Professional",
     ],
     heroSubtext:
-        "A commerce graduate passionate about finance, business strategy, and turning data into actionable insights that drive growth.",
+        "Finance graduate and CMA USA candidate with strong fundamentals in financial reporting, costing, and analytical problem-solving. Looking to start my career in a finance related role.",
 
     // ── About ──────────────────────────────────────────────────
     about: {
         paragraphs: [
-            "I'm a B.Com graduate with a strong foundation in accounting, finance, and business management. I enjoy analyzing market trends, building financial models, and finding data-driven solutions to real-world business challenges.",
-            "Beyond academics, I'm always exploring new areas in business analytics, investment strategies, and entrepreneurship. I believe in continuous learning and bringing fresh perspectives to the world of commerce.",
+            "Finance graduate and CMA USA candidate with strong fundamentals in financial reporting, costing, and analytical problem-solving. Experienced in preparing financial statements for academic projects, leading finance-focused initiatives, and using Excel for analysis.",
+            "Looking to start my career in a finance related role that aligns with my interest, where I can apply my financial knowledge, technical skills, and academics.",
         ],
         stats: [
-            { label: "Projects Completed", value: "15+" },
-            { label: "Certifications", value: "5+" },
-            { label: "Internships", value: "3+" },
+            { label: "CGPA", value: "7.4" },
+            { label: "Certifications", value: "3" },
+            { label: "Languages", value: "4" },
             { label: "Cups of Coffee", value: "∞" },
         ],
         resumeLink: "#", // Link to your resume PDF
     },
 
+    // ── Education ──────────────────────────────────────────────
+    education: [
+        {
+            degree: "Bachelor of Commerce (Finance)",
+            institution: "Government Arts College, Thiruvananthapuram",
+            year: "2022 – 2025",
+            score: "CGPA: 7.4",
+            icon: "🎓",
+        },
+        {
+            degree: "CBSE, Class XII",
+            institution: "Arya Central School, Pattom, Thiruvananthapuram",
+            year: "2022",
+            score: "89%",
+            icon: "📚",
+        },
+        {
+            degree: "CBSE, Class X",
+            institution: "Arya Central School, Pattom, Thiruvananthapuram",
+            year: "2020",
+            score: "88%",
+            icon: "📖",
+        },
+    ],
+
+    // ── Certifications ─────────────────────────────────────────
+    certifications: [
+        { name: "CMA USA", status: "Pursuing", icon: "🏆" },
+        { name: "Advanced Excel", status: "Completed", icon: "📊" },
+        { name: "SAP FICO", status: "Completed", icon: "💼" },
+    ],
+
+    // ── Projects / Academic Works ──────────────────────────────
+    projects: [
+        {
+            title: "Stock Market Awareness Study",
+            description:
+                "Designed a questionnaire-based study to measure stock market awareness as an investment option across districts in Kerala. Collected and analyzed responses from participants across different age groups.",
+            highlights: [
+                "Overall public awareness of stock markets was low",
+                "Individuals below age 40 showed higher awareness",
+                "Participants above age 60 showed minimal interest due to retirement stage",
+                "Comprehensive report covering stock market basics, investment theories, and perception analysis",
+            ],
+            tags: ["Research", "Data Analysis", "Finance"],
+            icon: "📈",
+        },
+        {
+            title: "Innovative Product Presentation",
+            description:
+                "Proposed an innovative self-charging wireless computer mouse that regenerates battery power through user hand movements.",
+            highlights: [
+                "Presented concept feasibility with energy-harvesting mechanism",
+                "Analyzed cost implications and user convenience benefits",
+                "Eliminating the need for battery replacement or charging",
+            ],
+            tags: ["Innovation", "Presentation", "Product Design"],
+            icon: "🖱️",
+        },
+    ],
+
     // ── Skills ─────────────────────────────────────────────────
     skills: [
         {
-            category: "Finance & Accounting",
-            icon: "💰",
-            items: [
-                { name: "Financial Analysis", level: 90 },
-                { name: "Accounting (Tally / Zoho)", level: 85 },
-                { name: "Taxation (GST / Income Tax)", level: 80 },
-                { name: "Auditing", level: 75 },
-            ],
-        },
-        {
-            category: "Business & Analytics",
-            icon: "📊",
-            items: [
-                { name: "Business Strategy", level: 85 },
-                { name: "Market Research", level: 80 },
-                { name: "Data Analysis", level: 75 },
-                { name: "Financial Modelling", level: 70 },
-            ],
-        },
-        {
-            category: "Tools & Software",
+            category: "Tools & Techniques",
             icon: "🛠️",
             items: [
-                { name: "Microsoft Excel", level: 92 },
-                { name: "Google Sheets", level: 88 },
-                { name: "Power BI / Tableau", level: 70 },
-                { name: "MS Office Suite", level: 90 },
+                { name: "MS Excel (Pivot Tables, Dashboards)", level: 92 },
+                { name: "Data Cleaning & Analysis", level: 85 },
+                { name: "MS Word", level: 88 },
+                { name: "PowerPoint", level: 85 },
+            ],
+        },
+        {
+            category: "Accounting & Finance",
+            icon: "💰",
+            items: [
+                { name: "Financial Reporting Basics", level: 85 },
+                { name: "Internal Controls", level: 80 },
+                { name: "Variance Analysis", level: 78 },
+                { name: "Budgeting Concepts", level: 82 },
             ],
         },
         {
             category: "Soft Skills",
             icon: "🤝",
             items: [
-                { name: "Communication", level: 90 },
-                { name: "Leadership", level: 85 },
-                { name: "Problem Solving", level: 88 },
+                { name: "Attention to Detail", level: 90 },
+                { name: "Analytical Thinking", level: 88 },
                 { name: "Team Collaboration", level: 92 },
+                { name: "Effective Communication", level: 85 },
             ],
         },
     ],
 
-    // ── GitHub ─────────────────────────────────────────────────
-    github: {
-        username: "gautamkrishna2k4", // ← Change to Gautam's real GitHub username
-        maxRepos: 6,
-        sortBy: "updated", // "stars", "updated", "pushed"
-        pinnedRepos: [],   // e.g. ["repo-name"] to always show these first
-        excludeRepos: [],  // repos to hide
-        excludeForks: true,
-    },
+    // ── Co-Curricular Activities ───────────────────────────────
+    activities: [
+        {
+            title: "World Cube Association Tournament",
+            description: "Finalist — Rubik's Cube",
+            icon: "🧩",
+        },
+        {
+            title: "Community Service",
+            description: "Volunteered in community service programs, contributing to social awareness and outreach activities",
+            icon: "🤲",
+        },
+        {
+            title: "Sports",
+            description: "Participated in multiple college sports events in cricket and badminton; part of the winning team in a cricket tournament",
+            icon: "🏏",
+        },
+    ],
+
+    // ── Languages ──────────────────────────────────────────────
+    languages: [
+        { name: "English", level: "Professional", proficiency: 90 },
+        { name: "Tamil", level: "Mother Tongue", proficiency: 100 },
+        { name: "Hindi", level: "Communication", proficiency: 75 },
+        { name: "Malayalam", level: "Communication", proficiency: 75 },
+    ],
 
     // ── Contact ────────────────────────────────────────────────
     contact: {
-        email: "gautamkrishna.r@example.com",
+        email: "gautamkrishna2k4@gmail.com",
+        phone: "+918590742459",
         heading: "Let's Connect & Collaborate",
         subtext:
-            "Looking for opportunities in finance, business analytics, or accounting? Let's talk!",
+            "Looking for opportunities in finance, accounting, or business analytics? Let's talk!",
         socials: [
             {
                 name: "GitHub",
@@ -98,18 +167,18 @@ const CONFIG = {
             },
             {
                 name: "LinkedIn",
-                url: "https://linkedin.com/in/gautamkrishna2k4",
+                url: "https://www.linkedin.com/in/gautam-krishna-551a0a280",
                 icon: "linkedin",
             },
             {
-                name: "Twitter",
-                url: "https://twitter.com/gautamkrishna2k4",
-                icon: "twitter",
+                name: "Email",
+                url: "mailto:gautamkrishna2k4@gmail.com",
+                icon: "mail",
             },
             {
-                name: "Email",
-                url: "mailto:gautamkrishna.r@example.com",
-                icon: "mail",
+                name: "Phone",
+                url: "tel:+918590742459",
+                icon: "phone",
             },
         ],
     },

@@ -7,7 +7,12 @@ document.addEventListener("DOMContentLoaded", () => {
     renderNav();
     renderHero();
     renderAbout();
+    renderEducation();
+    renderCertifications();
     renderSkills();
+    renderLanguages();
+    renderProjects();
+    renderActivities();
     renderContact();
     renderFooter();
     initParticles();
@@ -133,6 +138,48 @@ function renderAbout() {
     });
 }
 
+/* ── Education ──────────────────────────────────────────────── */
+function renderEducation() {
+    const timeline = document.getElementById("education-timeline");
+    CONFIG.education.forEach((edu, index) => {
+        const item = document.createElement("div");
+        item.className = "timeline-item reveal";
+        item.style.animationDelay = `${index * 0.15}s`;
+        item.innerHTML = `
+      <div class="timeline-marker">
+        <span class="timeline-icon">${edu.icon}</span>
+        <div class="timeline-line"></div>
+      </div>
+      <div class="timeline-content">
+        <div class="timeline-header">
+          <h3 class="timeline-title">${edu.degree}</h3>
+          <span class="timeline-year">${edu.year}</span>
+        </div>
+        <p class="timeline-institution">${edu.institution}</p>
+        <span class="timeline-score">${edu.score}</span>
+      </div>
+    `;
+        timeline.appendChild(item);
+    });
+}
+
+/* ── Certifications ─────────────────────────────────────────── */
+function renderCertifications() {
+    const grid = document.getElementById("cert-cards");
+    CONFIG.certifications.forEach((cert) => {
+        const card = document.createElement("div");
+        card.className = "cert-card reveal";
+        card.innerHTML = `
+      <span class="cert-icon">${cert.icon}</span>
+      <div class="cert-info">
+        <h4 class="cert-name">${cert.name}</h4>
+        <span class="cert-status ${cert.status.toLowerCase()}">${cert.status}</span>
+      </div>
+    `;
+        grid.appendChild(card);
+    });
+}
+
 /* ── Skills ─────────────────────────────────────────────────── */
 function renderSkills() {
     const grid = document.getElementById("skills-grid");
@@ -163,6 +210,64 @@ function renderSkills() {
     });
 }
 
+/* ── Languages ──────────────────────────────────────────────── */
+function renderLanguages() {
+    const grid = document.getElementById("languages-grid");
+    CONFIG.languages.forEach((lang) => {
+        const card = document.createElement("div");
+        card.className = "language-card reveal";
+        card.innerHTML = `
+      <div class="language-header">
+        <h4 class="language-name">${lang.name}</h4>
+        <span class="language-level">${lang.level}</span>
+      </div>
+      <div class="language-bar">
+        <div class="language-bar-fill" data-level="${lang.proficiency}"></div>
+      </div>
+    `;
+        grid.appendChild(card);
+    });
+}
+
+/* ── Projects ───────────────────────────────────────────────── */
+function renderProjects() {
+    const grid = document.getElementById("projects-grid");
+    CONFIG.projects.forEach((project) => {
+        const card = document.createElement("div");
+        card.className = "project-card reveal";
+        card.innerHTML = `
+      <div class="project-header">
+        <span class="project-icon">${project.icon}</span>
+        <div class="project-tags">
+          ${project.tags.map((t) => `<span class="project-tag">${t}</span>`).join("")}
+        </div>
+      </div>
+      <h3 class="project-title">${project.title}</h3>
+      <p class="project-description">${project.description}</p>
+      <ul class="project-highlights">
+        ${project.highlights.map((h) => `<li>${h}</li>`).join("")}
+      </ul>
+    `;
+        grid.appendChild(card);
+    });
+}
+
+/* ── Activities ─────────────────────────────────────────────── */
+function renderActivities() {
+    const grid = document.getElementById("activities-grid");
+    CONFIG.activities.forEach((activity) => {
+        const card = document.createElement("div");
+        card.className = "activity-card reveal";
+        card.innerHTML = `
+      <span class="activity-icon">${activity.icon}</span>
+      <div class="activity-info">
+        <h4 class="activity-title">${activity.title}</h4>
+        <p class="activity-description">${activity.description}</p>
+      </div>
+    `;
+        grid.appendChild(card);
+    });
+}
 
 /* ── Contact ────────────────────────────────────────────────── */
 function renderContact() {
@@ -170,6 +275,16 @@ function renderContact() {
     info.innerHTML = `
     <h3 class="contact-heading">${CONFIG.contact.heading}</h3>
     <p class="contact-subtext">${CONFIG.contact.subtext}</p>
+    <div class="contact-details">
+      <div class="contact-detail-item">
+        <i data-lucide="mail" style="width:18px;height:18px;color:var(--accent)"></i>
+        <a href="mailto:${CONFIG.contact.email}">${CONFIG.contact.email}</a>
+      </div>
+      <div class="contact-detail-item">
+        <i data-lucide="phone" style="width:18px;height:18px;color:var(--accent)"></i>
+        <a href="tel:${CONFIG.contact.phone}">${CONFIG.contact.phone}</a>
+      </div>
+    </div>
     <div class="contact-socials">
       ${CONFIG.contact.socials
             .map(
@@ -182,19 +297,15 @@ function renderContact() {
     </div>
   `;
 
-    // Form handler (placeholder – swap for your own backend)
+    // Form handler — opens mailto with form data
     document.getElementById("contact-form").addEventListener("submit", (e) => {
         e.preventDefault();
-        const btn = e.target.querySelector("button[type=submit]");
-        btn.textContent = "✓ Message Sent!";
-        btn.disabled = true;
-        setTimeout(() => {
-            btn.innerHTML =
-                '<i data-lucide="send" style="width:18px;height:18px"></i> Send Message';
-            btn.disabled = false;
-            e.target.reset();
-            lucide.createIcons();
-        }, 3000);
+        const name = document.getElementById("form-name").value;
+        const email = document.getElementById("form-email").value;
+        const message = document.getElementById("form-message").value;
+        const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
+        const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
+        window.open(`mailto:${CONFIG.contact.email}?subject=${subject}&body=${body}`, "_self");
     });
 }
 
@@ -225,6 +336,11 @@ function initScrollReveal() {
 
                     // Animate skill bars
                     entry.target.querySelectorAll(".skill-bar-fill").forEach((bar) => {
+                        bar.style.width = bar.dataset.level + "%";
+                    });
+
+                    // Animate language bars
+                    entry.target.querySelectorAll(".language-bar-fill").forEach((bar) => {
                         bar.style.width = bar.dataset.level + "%";
                     });
                 }
