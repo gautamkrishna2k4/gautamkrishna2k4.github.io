@@ -782,7 +782,6 @@ body:hover .cursor-glow {
 .project-description {
   color: var(--text-secondary);
   font-size: 0.9rem;
-  flex-grow: 1;
   line-height: 1.6;
 }
 
@@ -1164,6 +1163,8 @@ body:hover .cursor-glow {
   justify-content: space-between;
   align-items: center;
   margin-bottom: var(--space-sm);
+  gap: var(--space-sm);
+  flex-wrap: wrap;
 }
 
 .language-name {
